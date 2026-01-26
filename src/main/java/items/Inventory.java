@@ -94,7 +94,7 @@ public class Inventory
     public boolean isFull()
     {
         // Replace the next line
-        return false;
+        return this.capacity == this.slots.currentSize;
     }
 
     /**
@@ -133,6 +133,17 @@ public class Inventory
 
         // Use the appendNode/add logic from Review 1 as your starting point
         // Once we reach this function... we know that `toAdd` must be stored
+        if (this.slots.head == null){
+            this.slots.head = newNode;
+            this.slots.tail = newNode;
+            newNode = null; 
+            this.slots.currentSize = 1;
+       } else {
+            this.slots.tail.next = newNode;
+            newNode = null;
+            this.slots.tail = this.slots.tail.next;
+            this.slots.currentSize++;
+       }
     }
 
     /**
