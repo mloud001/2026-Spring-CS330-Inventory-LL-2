@@ -29,7 +29,7 @@ public class Inventory
     {
         // lhs needs to have items added to it.
         // rhs's size is needed
-        // lhs.????(rhs.????)
+        lhs.addItems(rhs.size());
     }
 
     /**
@@ -118,7 +118,17 @@ public class Inventory
     public ItemStack findMatchingItemStack(ItemStack key)
     {
         // Add the necessary sequential search loop
-
+        //Begin with the head node
+        LinkedList.Node<ItemStack> current = this.slots.head;
+        //Loop through entire LinkedList
+        while (current != null){
+            if(current.data.equals(key)){
+                //Return matching stack
+                return current.data;
+            }
+            current = current.next;
+        }
+        //No matches found
         return null;
     }
 
